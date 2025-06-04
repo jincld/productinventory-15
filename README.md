@@ -1,6 +1,6 @@
-# tecnoMarket
+# tecnomarket
 
-**tecnoMarket** es una aplicación web desarrollada con **React** que facilita la gestión de dispositivos electrónicos en una tienda. Permite a los usuarios con rol de administrador agregar, editar y eliminar productos de forma sencilla y eficiente.
+**tecnomarket** es una aplicación web desarrollada con **React** que facilita la gestión de dispositivos electrónicos en una tienda. Permite a los usuarios con rol de administrador agregar, editar y eliminar productos de forma sencilla y eficiente.
 
 ##  Características
 
@@ -16,7 +16,7 @@ La interfaz utiliza una estética moderna con una paleta de colores donde predom
 
 ##  Instalación y uso
 
-Para ejecutar **tecnoMarket** en tu entorno local:
+Para ejecutar **tecnomarket** en tu entorno local:
 
 1. Clona el repositorio
 
