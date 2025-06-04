@@ -25,3 +25,5 @@ npm install
 
 3. Ejecuta el entorno de desarrollo:
    npm run dev
+
+VIDEO: https://drive.google.com/file/d/1Rk47HREd-zDfY0_o9ox8KEi07LjIqS_2/view?usp=sharing
