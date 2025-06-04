@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { url } from "../utils/ApiUrl"; // Asegúrate de que 'url' apunte a la API de productos
+import { url } from "../utils/ApiUrl"; 
 
 const useProductAction = (getProducts) => {
   const navigate = useNavigate();
@@ -10,15 +10,20 @@ const useProductAction = (getProducts) => {
       const response = await fetch(`${url}/${id}`, {
         method: "DELETE",
       });
+
       if (!response.ok) {
         toast.error("Failed to delete product");
         throw new Error("Failed to delete product");
       }
-      toast.success("Product deleted successfully");
-      getProducts();
+
+      toast.success("Producto eliminado exitosamente");
+      // Opcional: esperar un poco para que el toast se vea antes de recargar
+      setTimeout(() => {
+        getProducts();
+      }, 1200);
     } catch (error) {
       console.error("Error deleting product:", error);
-      toast.error("Failed to delete product");
+      // Ya mostraste toast arriba, aquí no hace falta repetir
     }
   };
 

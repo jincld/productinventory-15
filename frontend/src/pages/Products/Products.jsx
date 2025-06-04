@@ -4,6 +4,7 @@ import InputText from "../../components/InputText/InputText";
 import Button from "../../components/Button/Button";
 import useDataProducts from "../../hooks/useDataProducts";
 import { useForm } from "react-hook-form";
+import './Products.css';
 
 const Products = () => {
   const { id } = useParams();
@@ -11,54 +12,72 @@ const Products = () => {
   const { register, handleSubmit, errors } = useDataProducts(methods);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Link
-        to="/home"
-        className="text-2xl font-bold text-gray-900 mb-4 bg-green-400 p-2 rounded w-auto text-center hover:bg-green-200 transition-colors"
-      >
-        Back To Dashboard
-      </Link>
+        <div className="homebg">
+    <div className="backproducts d-flex flex-column align-items-center">
+<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+  <Link
+    to="/home"
+    className="btn btn-secondary mb-4 mt-5"
+  >
+    Regresar a Dashboard
+  </Link>
 
-      <form
-        onSubmit={handleSubmit}
-        className="border-b border-gray-900/10 pb-12 bg-white shadow-md rounded-lg flex flex-col p-4"
-      >
-        <Titulo titulo="Product Information" />
+  <form
+    onSubmit={handleSubmit}
+    className="border border-gray-300 bg-white shadow-md rounded-lg p-4 mx-auto d-flex flex-column align-items-center"
+    style={{ maxWidth: "600px" }}
+  >
+    <Titulo titulo="Product Information" />
 
-        <div className="mt-3 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-          <InputText
-            type="text"
-            name="nombre"
-            label="Product Name"
-            placeholder="Enter product name"
-            register={register}
-            error={errors.nombre?.message}
-          />
+    <div className="mt-3 w-100 row gx-3 gy-3">
+      <InputText
+        type="text"
+        name="producto"
+        label="Product Name"
+        placeholder="Escribe el nombre del producto"
+        register={register}
+        error={errors?.producto?.message}
+        className="col-12 col-sm-6"
+      />
 
-          <InputText
-            type="number"
-            name="precio"
-            label="Price"
-            placeholder="Enter price"
-            register={register}
-            error={errors.precio?.message}
-          />
+      <InputText
+        type="number"
+        name="precio"
+        label="Price"
+        placeholder="Escribe el precio"
+        register={register}
+        error={errors?.precio?.message}
+        className="col-12 col-sm-6"
+      />
 
-          <InputText
-            type="text"
-            name="img"
-            label="Image URL"
-            placeholder="Enter image URL"
-            register={register}
-            error={errors.img?.message}
-          />
-        </div>
+      <InputText
+        type="text"
+        name="categoria"
+        label="Categoría"
+        placeholder="Escribe la categoría"
+        register={register}
+        error={errors?.categoria?.message}
+        className="col-12 col-sm-6"
+      />
 
-        <div className="mt-6 flex justify-start">
-          <Button type="submit" text={id ? "Edit Product" : "Save Product"} />
-        </div>
-      </form>
+      <InputText
+        type="number"
+        name="stock"
+        label="Stock"
+        placeholder="Escribe el stock"
+        register={register}
+        error={errors?.stock?.message}
+        className="col-12 col-sm-6"
+      />
     </div>
+
+    <div className="mt-4 w-100 d-flex justify-content-center">
+      <Button type="submit" text={id ? "Guardar cambios" : "Guardar producto"} />
+    </div>
+  </form>
+</div>
+</div>
+</div>
   );
 };
 

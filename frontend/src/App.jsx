@@ -19,7 +19,7 @@ function App() {
         position="top-right"
         reverseOrder={false}
         toastOptions={{
-          className: "bg-gray-800 text-white",
+          className: "bg-gray-800 text-black",
           duration: 3000,
           style: {
             fontSize: "16px",

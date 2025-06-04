@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { url } from "../utils/ApiUrl"; 
+import { url } from "../utils/ApiUrl";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import useFetchProducts from "./useFetchProducts";
@@ -23,11 +23,19 @@ const useDataProducts = (methods) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataForm),
       });
-      if (!response.ok) throw new Error("Failed to add product");
-      toast.success("Product saved successfully");
-      navigate("/home");
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Error al guardar (${response.status}): ${errorText}`);
+      }
+
+      toast.success("Producto guardado exitosamente");
+      setTimeout(() => {
+        navigate("/home");
+      }, 0); // <--- retraso para que el toast se vea bien
     } catch (error) {
-      toast.error("Error saving product");
+      toast.error("Error guardando producto");
+      console.error("Error POST:", error);
     } finally {
       reset();
       getProducts();
@@ -41,11 +49,19 @@ const useDataProducts = (methods) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataForm),
       });
-      if (!response.ok) throw new Error("Failed to update product");
-      toast.success("Product updated successfully");
-      navigate("/home");
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Error al actualizar (${response.status}): ${errorText}`);
+      }
+
+      toast.success("Producto actualizado exitosamente");
+      setTimeout(() => {
+        navigate("/home");
+      }, 0);
     } catch (error) {
-      toast.error("Error updating product");
+      toast.error("Error actualizando producto");
+      console.error("Error PUT:", error);
     } finally {
       reset();
       getProducts();
@@ -65,8 +81,10 @@ const useDataProducts = (methods) => {
       const product = await getProductById(id);
       if (product) {
         reset({
-          nombre: product.producto,
+          producto: product.producto,
           precio: product.precio,
+          categoria: product.categoria,
+          stock: product.stock,
         });
       }
     }

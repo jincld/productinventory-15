@@ -1,0 +1,19 @@
+.backhome{
+  min-height: 100vh; /* Asegura que cubra toda la altura de la pantalla */
+    z-index: 1;
+}
+
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.homebg{
+  min-height: 100vh; /* Asegura que cubra toda la altura de la pantalla */
+  background-image: url("/tmbg.png"); /* Usa `url()` y asegúrate de la ruta */
+  background-size: cover; /* Hace que la imagen se escale para cubrir toda el área */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que se repita */
+  z-index: 0;
+  position: relative;
+      min-width: 100vw;
+}
